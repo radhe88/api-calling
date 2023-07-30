@@ -1,0 +1,293 @@
+.header_topper {
+    background-color: #000;
+    padding: 15px 0;
+}
+
+.main_section .guest_container {
+    padding-top: 24px;
+}
+
+.header_topper .header_container,
+.guest_container,
+.tbl_container {
+    margin: 0 auto;
+    max-width: 1024px;
+}
+
+.header_topper .footer_line {
+    align-items: center;
+    background: radial-gradient(51.16% 58.67% at 54.97% 61.17%, #ffda24 0, #ca983d 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-column-gap: 5px;
+    column-gap: 5px;
+    display: flex;
+    font-size: 32px;
+    font-weight: 400;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+    width: fit-content;
+}
+
+.footer_line img {
+    width: 79px;
+    height: 52px;
+}
+
+.header_logOut {
+    color: red;
+    font-size: 25px;
+    font-weight: 600;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.header_container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.main_section {
+    background-color: #f4f4f4;
+}
+
+.main_section .guest_container .search_blog {
+    align-items: center;
+    -webkit-column-gap: 20px;
+    column-gap: 20px;
+    display: flex;
+    justify-content: end;
+    margin-right: 72px;
+    margin-top: 19px;
+    padding-bottom: 19px;
+}
+
+.search_box .search_input {
+    background: #fff;
+    border: 1.5px solid #aaa;
+    border-radius: 30px;
+    height: 42px;
+    padding: 11px 7px;
+    width: 300px;
+}
+
+.ant-input-affix-wrapper {
+    position: relative;
+    display: inline-flex;
+    width: 100%;
+    min-width: 0;
+    padding: 4px 11px;
+    color: rgba(0, 0, 0, 0.88);
+    font-size: 14px;
+    line-height: 1.5714285714285714;
+    background-color: #ffffff;
+    background-image: none;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #d9d9d9;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.ant-row.ant-form-item-row.commen_ {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 32px;
+}
+
+.ant-input-prefix svg {
+    width: 27px;
+    height: 22px;
+    display: flex;
+    color: #d9d9d9;
+    position: absolute;
+}
+
+.search_box .search_input input {
+    border: none;
+    border-radius: 0;
+    outline: none;
+    position: relative;
+    left: 32px;
+    display: flex;
+    top: -2px;
+    font-size: 14px;
+    font-weight: 400;
+    background: none;
+    font-family: 'Montserrat';
+}
+
+.main_section .guest_container .search_blog .fliter_btn_group {
+    align-items: center;
+    -webkit-column-gap: 12px;
+    column-gap: 12px;
+    display: flex;
+}
+
+.main_section .go_btn {
+    background-color: #ff4949;
+    color: #aaa;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.main_section .round_btn {
+    align-items: center;
+    border-radius: 50%;
+    display: flex;
+    height: 42px;
+    justify-content: center;
+    width: 42px;
+    border: none;
+}
+
+.main_section .filter_btn {
+    background: #4b99f5;
+    padding: initial;
+    cursor: pointer;
+}
+
+.main_section .non_filter_btn {
+    background: #d9d9d9;
+    padding: initial;
+    cursor: pointer;
+}
+
+.fliter_btn_group svg {
+    width: 20px;
+    height: 20px;
+    color: #fff;
+}
+
+.main_section .add_btn {
+    align-items: center;
+    background: #495568;
+    border-radius: 10px;
+    column-gap: 8px;
+    display: flex;
+    height: 42px;
+    justify-content: center;
+    width: 106px;
+    border: none;
+    cursor: pointer;
+}
+
+.main_section .add_btn span {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+.tbl_section {
+    background-color: #f4f4f4;
+    padding-bottom: 50px;
+}
+
+.ant-table-container::before {
+    inset-inline-start: 0;
+}
+
+.ant-table-container::after {
+    inset-inline-end: 0;
+}
+.ant-spin-nested-loading .ant-spin-container {
+    position: relative;
+    transition: opacity 0.3s;
+}
+
+.ant-table-content table thead tr th:first-child {
+    padding-left: 30px;
+}
+
+table thead tr th {
+    background: #d9d9d9;
+    border-radius: 0;
+    border-radius: initial;
+    color: #000;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 17.5px 10px;
+    text-align: left;
+    text-transform: capitalize;
+    width: fit-content;
+}
+
+.ant-table-wrapper table {
+    width: 100%;
+    text-align: start;
+    border-radius: 8px 8px 0 0;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.ant-table-content table tbody tr td {
+    background: #fff;
+    color: #575757;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 20px;
+    padding: 20px 10px;
+    text-align: left;
+    vertical-align: top;
+    font-family: Montserrat;
+}
+
+.ant-table-content table tbody tr td:first-child {
+    padding-left: 30px;
+}
+
+.allergy-other ul {
+    text-decoration: underline;
+}
+
+.ant-table-cell .action {
+    text-align: center;
+}
+
+.d-flex-justify {
+    display: flex;
+}
+
+.d-flex-justify svg:first-child {
+    margin-right: 17px;
+    color: rgb(255, 73, 73);
+}
+
+.d-flex-justify svg {
+    width: 20.5px;
+    height: 20.5px;
+    cursor: pointer;
+}
+
+.d-flex-justify .deleteBtn {
+    width: 16.67px;
+    height: 16.67px;
+    top: 4px;
+    position: relative;
+}
+
+
+.header_container .page_link {
+    font-size: 20px;
+    border-bottom: 0.5px solid #f5c22d;
+    color: #f5c22d;
+    font-weight: 500;
+    right: 41px;
+    text-align: right;
+    text-decoration: none;
+    position: relative;
+    font-family: 'Neutra Text Alt';
+    display: flex;
+    align-items: center;
+}
+
+.ant-table-tbody>tr>td {
+    border-bottom: 1px solid #f0f0f0;
+}

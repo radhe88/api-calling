@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'Neutra Text';
+    src: url('NeutraText-BoldItalic.woff2') format('woff2'),
+        url('NeutraText-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Neutra Text';
+    src: url('NeutraText-Bold.woff2') format('woff2'),
+        url('NeutraText-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Neutra Text';
+    src: url('NeutraText-Light.woff2') format('woff2'),
+        url('NeutraText-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Neutra Text Alt';
+    src: url('NeutraText-BookAlt.woff2') format('woff2'),
+        url('NeutraText-BookAlt.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Neutra Text TF';
+    src: url('NeutraTextTF-Book.woff2') format('woff2'),
+        url('NeutraTextTF-Book.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+

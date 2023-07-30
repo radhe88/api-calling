@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+
+body,
+ol,
+ul,
+li,
+div,
+p,
+span,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+table,
+thead,
+th,
+tbody,
+tr,
+td,
+img,
+input,
+textarea,
+dd,
+dt,
+dl {
+    word-wrap: break-word;
+    outline: none;
+    padding: 0;
+    margin: 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-family: 'Montserrat', sans-serif;
+}
+
+textarea {
+    overflow: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dd,
+dt,
+dl {
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+a img,
+img {
+    border: none;
+    outline: none;
+    display: block;
+    max-width: 100%;
+}
+
+.no-script-msg {
+    font: 12px Arial, verdana, Helvetica, sans-serif;
+    width: auto;
+    padding: 10px 10px 10px 25px;
+    margin: 8px;
+    border: 1px solid #CD3D18;
+    font-weight: bold;
+    height: auto;
+    font-size: 11px;
+    color: #000000;
+    line-height: 150%;
+    clear: both;
+}
+
+/* input {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Poppins-Regular', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+} */
+
+body {
+    font-family: Arial, sans-serif;
+    min-width: 300px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -ms-font-smoothing: antialiased;
+    background-color: #fff;
+}
+
+::selection {
+    text-shadow: none;
+    background: rgba(65, 131, 196, 0.4);
+}
+
+.clear {
+    clear: both;
+    height: 0px;
+    overflow: hidden;
+    width: auto;
+    display: block;
+    float: none !important;
+}
+
+ul,
+menu,
+dir {
+    margin: 0px;
+    padding: 0px;
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+    -webkit-padding-start: 0;
+}
+
+*,
+*:after,
+*:before {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* @font-face {
+    font-family: 'Neutra Text';
+    src: local('NeutraText-Bold.woff2') format('woff2'),
+        url('NeutraText-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+} */

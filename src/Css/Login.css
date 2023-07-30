@@ -1,0 +1,119 @@
+.main_section .login_container {
+    margin: 0 auto;
+    max-width: 325px;
+    padding-bottom: 602px;
+}
+
+.main_section .login_container .login_box {
+    padding-top: 71px;
+}
+
+
+.main_heading,
+.main_section .login_container .login_box .login_heading {
+    font-family: Neutra Text Alt;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28px;
+    text-align: center;
+}
+
+.main_section .login_container .login_box .login_heading {
+    margin-bottom: 85px;
+}
+
+.main_section .login_container .login_box .login_content {
+    margin-inline: auto;
+    max-width: 300px;
+}
+
+.main_section .login_container .login_box .login_content h4 {
+    color: #575757;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.main_section .ant-form-item-control {
+    align-items: baseline;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.main_section .login_container .login_box .login_content .input_txt {
+    background: #f8f8f8;
+    border: 1.5px solid #f5c22d;
+    border-radius: 5px;
+    font-family: Montserrat;
+    font-weight: 400;
+    height: 40px;
+    padding: 10px 12px;
+    width: 300px;
+    font-size: 14px;
+}
+
+.ant-form-item-control-input-content {
+    margin-bottom: 20px;
+}
+
+.login_heading {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28px;
+    text-align: center;
+}
+
+.main_section .ant-input-suffix {
+    color: rgba(62, 74, 88, .749);
+    font-style: italic;
+    right: 40px;
+    position: relative;
+    top: 7px;
+}
+
+.main_section span.ant-input-password-icon {
+    position: absolute;
+    font-family: Montserrat;
+    font-weight: 500;
+    font-size: 12px;
+    top: -8px;
+}
+
+.main_section .btn_grp {
+    display: flex;
+    justify-content: center;
+}
+
+.clear_btn,
+.submit_btn {
+    background: #dce1f2;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    height: 42px;
+    letter-spacing: .3125px;
+    line-height: 20px;
+    text-align: center;
+    width: 154px;
+    cursor: pointer;
+    font-family: 'Montserrat';
+}
+
+.submit_btn {
+    background: #ff4949;
+    color: #fff;
+}
+
+.main_section .btn_grp {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 48px;
+}
+
+p.error_message {
+    color: #ff4d4f;
+}
