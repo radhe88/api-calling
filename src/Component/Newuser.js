@@ -3,14 +3,23 @@ import { AiOutlineClose } from "react-icons/ai";
 import { useState, useEffect } from "react";
 // import { BsChevronDown } from 'react-icons/bs';
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import axios from "axios";
+import { getFromDetails } from "../API/commonAPI";
 
 const Newuser = ({ canclemodel, saveData }) => {
+	const session = useSelector((store) => store?.auth?.session);
 	const [formErrors, setFormErrors] = useState({});
+	const [toggle, setToggle] = useState(false);
+	// const [tableList, setTableList] = useState([]);
+	const [seatList, setSeatList] = useState([]);
+
+
 	const [message, setMessage] = useState("");
 	const navigate = useNavigate();
-
+	const dispatch = useDispatch();
+	const formData = useSelector((state) => state.auth.session);
 	const [inputField, setInputField] = useState({
 		fname: "",
 		lname: "",
@@ -32,9 +41,8 @@ const Newuser = ({ canclemodel, saveData }) => {
 			errors.lname = "please input Last name!";
 		}
 		if (inputField.type.trim() === "") {
-			errors.kids = "Please select a type!";
+			errors.type = "Please select a type!";
 		}
-		console.log(inputField);
 		setFormErrors(errors);
 		return Object.keys(errors).length === 0;
 	};
@@ -53,32 +61,62 @@ const Newuser = ({ canclemodel, saveData }) => {
 			//
 		}
 	};
+	//submit function
 	const addMemberDetails = async (e) => {
 		e.preventDefault();
-		if (validateForm()) {
-			canclemodel(false);
-
-			saveData(inputField);
-		}
-	};
-
-	const onSubmit = async (data) => {
-		console.log(data);
-		const res = await axios.post("​/order​/add", data).then((responce) => {
-			setMessage(responce.data);
-			console.log(responce.data);
-		});
-
-		if (message) {
-			setMessage(res.data);
-			setTimeout(() => {
-				navigate("/");
-			}, 2000);
+		if (!validateForm()) {
+			alert("Fill Required Fields");
 		} else {
-			setMessage("Some Error Occured!");
+			let payload = {
+				"first_name": inputField.fname,
+				"last_name": inputField.lname,
+				"type": inputField.type,
+				"course": inputField.course,
+				"entree": inputField.entree,
+				"allergy": [],
+				"table_no": inputField.table,
+				"seat_no": inputField.seat,
+				"other": ""
+			}
+			const res = await axios.post("/order/add", payload, {
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: session?.token,
+				}
+			})
+				.then((response) => {
+					alert(response.data.message);
+					canclemodel(false);
+				})
+				.catch((error) => {
+					alert(error.response.data.message)
+				})
+			//setMessage(responce.data);
+
 		}
 	};
 
+	const getTableDetails = async (tableNo) => {
+		const res = await axios.get(`/order/getTableWiseSeat/${tableNo}`, {
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: session?.token,
+			}
+
+		})
+			.then((response) => {
+				setSeatList(response.data.data)
+			})
+			.catch((error) => {
+				alert(error.response.data.message)
+			})
+	}
+	useEffect(() => {
+		dispatch(getFromDetails())
+		setSeatList(formData.seat)
+	}, [toggle])
+	useEffect(() => {
+	}, [])
 	return (
 		<>
 			<div className="ant-modal-root commen_">
@@ -97,7 +135,7 @@ const Newuser = ({ canclemodel, saveData }) => {
 						</button>
 						<div className="ant-modal-body">
 							<form
-								onSubmit={onSubmit}
+								//onSubmit={handelsubmit}
 								action=""
 								className="ant-form ant-form-horizontal commen_ filter-wrapper add-order-pop"
 							>
@@ -211,20 +249,16 @@ const Newuser = ({ canclemodel, saveData }) => {
 														value={
 															inputField?.table
 														}
-														onChange={inputsHandler}
+														onChange={(e) => { inputsHandler(e); getTableDetails(e.target.value); }}
 														id="select_table"
 														name="table"
 													>
-														<option>1</option>
-														<option>2</option>
-														<option>3</option>
-														<option>4</option>
-														<option>5</option>
-														<option>6</option>
-														<option>7</option>
-														<option>8</option>
-														<option>9</option>
-														<option>10</option>
+														<option value="">--Select--</option>
+														{formData.table.map((row, index) => (
+															<option value={row.table_no} key={index}>
+																{row.table_no}
+															</option>
+														))}
 													</select>
 												</div>
 											</div>
@@ -240,37 +274,36 @@ const Newuser = ({ canclemodel, saveData }) => {
 														id="select_table"
 														name="seat"
 													>
-														<option>1</option>
-														<option>2</option>
-														<option>3</option>
-														<option>4</option>
-														<option>5</option>
-														<option>6</option>
-														<option>7</option>
-														<option>8</option>
-														<option>9</option>
-														<option>10</option>
-														<option>11</option>
+														<option value="">--Select--</option>
+														{seatList.map((row, index) => (
+															<option value={row.seat_no} key={index} disabled={row.is_assign === "true"}>
+																{row.seat_no}
+															</option>
+														))}
 													</select>
 												</div>
 											</div>
 											<div className="ant-form-item custom-input commen_ ant-form-item-with-help ant-form-item-has-error">
 												<div className="ant-form-item-control-input-content">
 													<input
-														name="kids"
+														name="type"
 														type="text"
 														className="ant-input ant-input-status-error position_added yellow-outline width_input"
 													/>
 													<select
-														value={inputField?.kids}
+														value={inputField?.type}
 														onChange={inputsHandler}
 														id="select_table"
-														name="kids"
+														name="type"
 													>
-														<option>Adult</option>
-														<option>Kid</option>
+														<option value="">--Select--</option>
+														{formData.type.map((row, index) => (
+															<option value={row.type} key={index}>
+																{row.type}
+															</option>
+														))}
 													</select>
-													{/* {formErrors.kids && <span className="error">{formErrors.kids}</span>} */}
+													{formErrors.type && <span className="error">{formErrors.type}</span>}
 												</div>
 											</div>
 											<div className="ant-form-item custom-input commen_ ant-form-item-with-help ant-form-item-has-error">
@@ -287,17 +320,12 @@ const Newuser = ({ canclemodel, saveData }) => {
 														id="select_table"
 														name="course"
 													>
-														<option>Salad</option>
-														<option>
-															Lobster Bisque
-														</option>
-														<option>
-															Kosher 1st Course
-														</option>
-														<option>
-															Teen Buffet 1st
-															Course
-														</option>
+														<option value="">--Select--</option>
+														{formData.course.map((row, index) => (
+															<option value={row._id} key={row.key}>
+																{row.course_name}
+															</option>
+														))}
 													</select>
 												</div>
 											</div>
@@ -315,21 +343,12 @@ const Newuser = ({ canclemodel, saveData }) => {
 														id="select_table"
 														name="entree"
 													>
-														<option>
-															Sea Bass
-														</option>
-														<option>
-															Filet of Beef
-														</option>
-														<option>
-															Maitake Steak
-														</option>
-														<option>
-															Kosher Entree
-														</option>
-														<option>
-															Teen Buffet Entree
-														</option>
+														<option value="">--Select--</option>
+														{formData.entree.map((row, index) => (
+															<option value={row._id} key={row.key}>
+																{row.entree_name}
+															</option>
+														))}
 													</select>
 												</div>
 											</div>
@@ -343,6 +362,11 @@ const Newuser = ({ canclemodel, saveData }) => {
 														type="text"
 														className="ant-input ant-input-status-error commen_ allergy_width "
 													/>
+													{/* {formData.allergy.map((row, index) => (
+														<option value={row._id} key={row.key}>
+															{row.allergy_name}
+														</option>
+													))} */}
 												</div>
 											</div>
 											<div className="ant-form-item custom-input commen_ ant-form-item-with-help ant-form-item-has-error">
