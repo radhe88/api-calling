@@ -47,9 +47,7 @@
     background: #f8f8f8;
     border: 1.5px solid #f5c22d;
     border-radius: 5px;
-    font-family: Montserrat;
-    font-weight: 400;
-    height: 40px;
+    font-weight: 600;
     padding: 10px 12px;
     width: 300px;
     font-size: 14px;
@@ -69,7 +67,7 @@
 .main_section .ant-input-suffix {
     color: rgba(62, 74, 88, .749);
     font-style: italic;
-    right: 40px;
+    right: 47px;
     position: relative;
     top: 7px;
 }
@@ -77,9 +75,8 @@
 .main_section span.ant-input-password-icon {
     position: absolute;
     font-family: Montserrat;
-    font-weight: 500;
-    font-size: 12px;
-    top: -8px;
+    font-weight: 600;
+    top: -17px;
 }
 
 .main_section .btn_grp {

@@ -75,7 +75,6 @@
 
 .ant-input-affix-wrapper {
     position: relative;
-    display: inline-flex;
     width: 100%;
     min-width: 0;
     padding: 4px 11px;
@@ -113,7 +112,7 @@
     position: relative;
     left: 32px;
     display: flex;
-    top: -2px;
+    top: 0px;
     font-size: 14px;
     font-weight: 400;
     background: none;
@@ -197,6 +196,7 @@
 .ant-table-container::after {
     inset-inline-end: 0;
 }
+
 .ant-spin-nested-loading .ant-spin-container {
     position: relative;
     transition: opacity 0.3s;
@@ -231,7 +231,7 @@ table thead tr th {
     background: #fff;
     color: #575757;
     font-size: 12px;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 20px;
     padding: 20px 10px;
     text-align: left;
@@ -290,4 +290,131 @@ table thead tr th {
 
 .ant-table-tbody>tr>td {
     border-bottom: 1px solid #f0f0f0;
+}
+
+.ant-form-item-control-input-content {
+    display: flex;
+    align-items: center;
+}
+
+span.error {
+    font-size: 12px;
+    margin-left: 10px;
+    color: #ff4d4f;
+}
+
+.no_data_wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    margin-top: 50px;
+    text-align: center;
+    width: 100%;
+}
+
+ul.ant-pagination.ant-pagination-simple.ant-table-pagination.ant-table-pagination-right {
+    margin: 16px 0px;
+}
+
+.ant-pagination-next,
+.ant-pagination-prev {
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+}
+
+.ant-pagination.ant-pagination-simple .ant-pagination-simple-pager {
+    display: inline-block;
+    height: 24px;
+}
+
+.ant-pagination .ant-pagination-simple-pager {
+    color: #575757;
+    font-family: Montserrat;
+    font-weight: 600;
+    margin: 0 32px;
+}
+
+.ant-pagination-simple-pager input {
+    box-sizing: border-box;
+    height: 100%;
+    text-align: center;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s;
+    color: inherit;
+}
+
+.ant-pagination-simple-pager input {
+    background-color: transparent !important;
+    border: none !important;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    margin-inline-end: 0 !important;
+    padding: initial !important;
+    width: 18px;
+}
+
+.ant-pagination-simple-pager input:hover {
+    border-color: #1677ff;
+}
+
+.ant-pagination .ant-pagination-simple-pager .ant-pagination-slash {
+    margin-inline-end: 8px;
+    margin-inline-start: 0;
+    visibility: hidden;
+}
+
+.ant-pagination .ant-pagination-simple-pager .ant-pagination-slash:after {
+    content: "of";
+    visibility: visible;
+}
+
+.ant-table-wrapper .ant-table-pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.flexPosition {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    /* bottom: 10px; */
+}
+
+button.cancelButton {
+    align-items: center;
+    border-radius: 50%;
+    display: flex;
+    height: 18px;
+    justify-content: center;
+    width: 18px;
+    border: none;
+    cursor: pointer;
+}
+
+.search_box .search_input:hover {
+    border-color: #4096ff;
+    border-inline-end-width: 1px;
+}
+
+svg.cancleButtonColor {
+    color: black;
+    width: 27px;
+    height: 27px;
+}
+
+.fixedPosition {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+}
+
+h3.header_logOut {
+    font-size: 20px;
+    font-family: Neutra Text Alt;
 }

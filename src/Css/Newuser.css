@@ -108,7 +108,7 @@
      overflow: hidden;
      padding: 10px;
      text-align: left;
-     width: 225px;
+     width: 181px;
  }
 
  .yellow-outline {
@@ -134,7 +134,7 @@
 
  .ant-modal-wrap.ant-modal-centered {
      background-color: rgba(0, 0, 0, 0.5);
-     /* position: fixed; */
+     position: fixed;
      height: 100%;
      width: 100%;
      top: 0;
