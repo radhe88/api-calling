@@ -31,20 +31,25 @@ const Header = () => {
 	const [loading, setLoading] = useState(false);
 	const [totalPage, setTotalPage] = useState(0);
 	const [modelvisible, setmodelvisible] = useState(false);
-	const [isModalVisible, setIsModalVisible] = useState(false);
+	const [recordId, setRecordId] = useState("");
+
+	const [isDeleteVisible, setIsDeleteVisible] = useState(false);
 	const [isFilterModel, setIsFilterModel] = useState(false);
 	const navigate = useNavigate();
 
 	const showmodel = () => {
+		setRecordId("");
 		setmodelvisible(true);
 	};
 	const canclemodel = () => {
+		setRecordId("");
 		setmodelvisible(false);
 	};
 	const closemodel = () => {
-		setIsModalVisible(false);
+		setIsDeleteVisible(false);
 	};
-	const shoeEditmodel = () => {
+	const shoeEditmodel = (recordId) => {
+		setRecordId(recordId);
 		setmodelvisible(true);
 	};
 	const filterModel = () => {
@@ -53,9 +58,11 @@ const Header = () => {
 	const closeFilterModel = () => {
 		setIsFilterModel(false);
 	};
-	const showEditModal = () => {
-		setIsModalVisible(true);
+	const showDeleteModal = (id) => {
+		setRecordId(id);
+		setIsDeleteVisible(true);
 	};
+
 
 	const getData = async () => {
 		setLoading(true);
@@ -271,7 +278,7 @@ const Header = () => {
 														</thead>
 														<tbody className="ant-table-tbody">
 															{data.length ===
-															0 ? (
+																0 ? (
 																<tr>
 																	<td
 																		className="noData"
@@ -336,7 +343,7 @@ const Header = () => {
 																					}
 																				</td>
 																				<td className="ant-table-cell">
-																					{}
+																					{ }
 																				</td>
 																				<td className="ant-table-cell">
 																					qw
@@ -366,14 +373,10 @@ const Header = () => {
 																				<td className="ant-table-cell action">
 																					<div className="d-flex-justify">
 																						<LuEdit
-																							onClick={
-																								shoeEditmodel
-																							}
+																							onClick={() => shoeEditmodel(client._id)}
 																						/>
 																						<RiDeleteBinLine
-																							onClick={
-																								showEditModal
-																							}
+																							onClick={() => showDeleteModal(client._id)}
 																							className="deleteBtn"
 																						/>
 																					</div>
@@ -431,12 +434,12 @@ const Header = () => {
 					</div>
 					{modelvisible && (
 						<div className="modal">
-							<Newuser canclemodel={canclemodel} />
+							<Newuser data={recordId} canclemodel={canclemodel} />
 						</div>
 					)}
-					{isModalVisible && (
+					{isDeleteVisible && (
 						<div className="modal">
-							<Delete closemodel={closemodel} />
+							<Delete closemodel={closemodel} dataId={recordId} />
 						</div>
 					)}
 					{isFilterModel && (

@@ -8,10 +8,11 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { getFromDetails } from "../API/commonAPI";
 
-const Newuser = ({ canclemodel, saveData }) => {
+const Newuser = ({ canclemodel, data, saveData }) => {
 	const session = useSelector((store) => store?.auth?.session);
 	const [formErrors, setFormErrors] = useState({});
 	const [toggle, setToggle] = useState(false);
+	const [isEdit, setIsEdit] = useState(false);
 	// const [tableList, setTableList] = useState([]);
 	const [seatList, setSeatList] = useState([]);
 
@@ -20,16 +21,19 @@ const Newuser = ({ canclemodel, saveData }) => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const formData = useSelector((state) => state.auth.session);
-	const [inputField, setInputField] = useState({
-		fname: "",
-		lname: "",
-		type: "",
-		seat: "",
-		kids: "",
-		course: "",
-		entree: "",
-		table: "",
-	});
+	const [inputField, setInputField] = useState(
+		{
+			fname: "",
+			lname: "",
+			type: "",
+			seat: "",
+			kids: "",
+			course: "",
+			entree: "",
+			table: "",
+			other: ""
+		}
+	);
 
 	const validateForm = () => {
 		let errors = {};
@@ -67,30 +71,61 @@ const Newuser = ({ canclemodel, saveData }) => {
 		if (!validateForm()) {
 			alert("Fill Required Fields");
 		} else {
-			let payload = {
-				"first_name": inputField.fname,
-				"last_name": inputField.lname,
-				"type": inputField.type,
-				"course": inputField.course,
-				"entree": inputField.entree,
-				"allergy": [],
-				"table_no": inputField.table,
-				"seat_no": inputField.seat,
-				"other": ""
-			}
-			const res = await axios.post("/order/add", payload, {
-				headers: {
-					'Content-Type': 'application/json',
-					Authorization: session?.token,
+			if (isEdit) {
+				// update record
+				let payload = {
+					"first_name": inputField.fname,
+					"last_name": inputField.lname,
+					"type": inputField.type,
+					"course": inputField.course,
+					"entree": inputField.entree,
+					"allergy": [],
+					"table_no": inputField.table,
+					"seat_no": inputField.seat,
+					"other": ""
 				}
-			})
-				.then((response) => {
-					alert(response.data.message);
-					canclemodel(false);
+				const res = await axios.post(`/order/update/${data}`, payload, {
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization: session?.token,
+					}
 				})
-				.catch((error) => {
-					alert(error.response.data.message)
+					.then((response) => {
+						alert(response.data.message);
+						canclemodel(false);
+					})
+					.catch((error) => {
+						alert(error.response.data.message)
+					})
+
+			} else {
+				//add new record
+				let payload = {
+					"first_name": inputField.fname,
+					"last_name": inputField.lname,
+					"type": inputField.type,
+					"course": inputField.course,
+					"entree": inputField.entree,
+					"allergy": [],
+					"table_no": inputField.table,
+					"seat_no": inputField.seat,
+					"other": ""
+				}
+				const res = await axios.post("/order/add", payload, {
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization: session?.token,
+					}
 				})
+					.then((response) => {
+						alert(response.data.message);
+						canclemodel(false);
+					})
+					.catch((error) => {
+						alert(error.response.data.message)
+					})
+			}
+
 			//setMessage(responce.data);
 
 		}
@@ -111,12 +146,43 @@ const Newuser = ({ canclemodel, saveData }) => {
 				alert(error.response.data.message)
 			})
 	}
+	const getRecordDetails = async (id) => {
+		const res = await axios.get(`/order/edit/${id}`, {
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: session?.token,
+			}
+
+		})
+			.then((response) => {
+				let existingData = {
+					fname: response.data.data.first_name,
+					lname: response.data.data.last_name,
+					type: response.data.data.type,
+					seat: response.data.data.seat_no,
+					course: response.data.data.course._id,
+					entree: response.data.data.entree._id,
+					table: response.data.data.table_no,
+				}
+				setInputField(existingData)
+				// setSeatList(response.data.data)
+			})
+			.catch((error) => {
+				alert(error.response.data.message)
+			})
+	}
 	useEffect(() => {
 		dispatch(getFromDetails())
 		setSeatList(formData.seat)
 	}, [toggle])
 	useEffect(() => {
-	}, [])
+		if (data !== "") {
+			setIsEdit(true);
+			getRecordDetails(data);
+		} else {
+			setIsEdit(false);
+		}
+	}, [data])
 	return (
 		<>
 			<div className="ant-modal-root commen_">
@@ -286,7 +352,6 @@ const Newuser = ({ canclemodel, saveData }) => {
 											<div className="ant-form-item custom-input commen_ ant-form-item-with-help ant-form-item-has-error">
 												<div className="ant-form-item-control-input-content">
 													<input
-														name="type"
 														type="text"
 														className="ant-input ant-input-status-error position_added yellow-outline width_input"
 													/>
@@ -372,7 +437,12 @@ const Newuser = ({ canclemodel, saveData }) => {
 											<div className="ant-form-item custom-input commen_ ant-form-item-with-help ant-form-item-has-error">
 												<div className="ant-form-item-control-input-content">
 													<textarea
+														name="other"
 														type="text"
+														onChange={inputsHandler}
+														value={
+															inputField?.other
+														}
 														className="ant-input ant-input-status-error  allergy_width "
 													/>
 												</div>

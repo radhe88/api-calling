@@ -12,7 +12,7 @@ export const getFromDetails = () => {
                 {
                     headers: {
                         'Content-Type': 'application/json',
-                        Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjkxNDI4MzAwLCJleHAiOjE2OTE1MTQ3MDB9.i8vsLdiqtHO_q1mNp46vCUFdIm8zimxwCFqxyAvHvTk"
+                        Authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjkxNjg3NjUyLCJleHAiOjE2OTE3NzQwNTJ9.s3lRO3CBmlnaCnGzmBRLZgTeCVYPfg9eRUd-FiOLG8s"
                     }
                 }
             )
