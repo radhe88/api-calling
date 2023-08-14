@@ -32,7 +32,6 @@ const Header = () => {
 	const [totalPage, setTotalPage] = useState(0);
 	const [modelvisible, setmodelvisible] = useState(false);
 	const [recordId, setRecordId] = useState("");
-
 	const [isDeleteVisible, setIsDeleteVisible] = useState(false);
 	const [isFilterModel, setIsFilterModel] = useState(false);
 	const navigate = useNavigate();
@@ -63,11 +62,9 @@ const Header = () => {
 		setIsDeleteVisible(true);
 	};
 
-
 	const getData = async () => {
 		setLoading(true);
 		try {
-			// let token = localStorage.getItem("token")
 			const headers = {
 				"accept ": "application/json",
 				Authorization: session?.token,
@@ -82,11 +79,8 @@ const Header = () => {
 				.then((res) => {
 					setData(res.data.data.results);
 					setTotalPage(res.data.data.totalPages);
-					// console.log(res.data);
-					// console.log(res.data.data.results);
 				})
 				.catch(function (error) {
-					// handle error
 					console.log(error);
 				});
 		} catch (error) {
@@ -106,10 +100,6 @@ const Header = () => {
 	const handleLogout = () => {
 		dispatch(onSignOutSuccess());
 		navigate("/sign-in");
-		// localStorage.removeItem("token");
-		// // window.location = '/';
-		// navigate("/");
-		// console.log(handleLogout);
 	};
 
 	return (

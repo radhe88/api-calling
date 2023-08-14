@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import logo from "../img/Group.png";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { onSignInSuccess } from "../store/auth/sessionSlice";
 
 const Login = () => {
 	// State variables to store login credentials and error messages
-	// const store = useSelector((store) => store?.auth?.session);
 	const dispatch = useDispatch();
+	const store = useSelector((store) => store?.auth?.session);
+	console.log(store);
 	const [credentials, setCredentials] = useState({
 		username: "admin",
 		password: "admin#23",
@@ -31,7 +31,7 @@ const Login = () => {
 		try {
 			const response = await axios.post("/login", credentials);
 			if (response?.status === 200) {
-				dispatch(onSignInSuccess(response.data?.data?.token));
+				dispatch(onSignInSuccess(response.data?.data?.token?.trim()));
 				navigate("/");
 			} else alert(response?.data?.message);
 			// .then((res) => {

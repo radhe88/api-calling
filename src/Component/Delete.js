@@ -16,11 +16,11 @@ const Delete = ({ closemodel, dataId }) => {
 
         })
             .then((response) => {
-                alert(response.data.message);
+                alert(response?.data?.message);
                 closemodel();
             })
             .catch((error) => {
-                alert(error.response.data.message)
+                alert(error?.response?.data?.message)
             })
     }
     useEffect(() => {

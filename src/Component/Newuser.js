@@ -172,7 +172,7 @@ const Newuser = ({ canclemodel, data, saveData }) => {
 			})
 	}
 	useEffect(() => {
-		dispatch(getFromDetails())
+		dispatch(getFromDetails(session))
 		setSeatList(formData.seat)
 	}, [toggle])
 	useEffect(() => {
@@ -320,7 +320,7 @@ const Newuser = ({ canclemodel, data, saveData }) => {
 														name="table"
 													>
 														<option value="">--Select--</option>
-														{formData.table.map((row, index) => (
+														{formData.table?.map((row, index) => (
 															<option value={row.table_no} key={index}>
 																{row.table_no}
 															</option>
@@ -341,7 +341,7 @@ const Newuser = ({ canclemodel, data, saveData }) => {
 														name="seat"
 													>
 														<option value="">--Select--</option>
-														{seatList.map((row, index) => (
+														{seatList?.map((row, index) => (
 															<option value={row.seat_no} key={index} disabled={row.is_assign === "true"}>
 																{row.seat_no}
 															</option>
@@ -362,7 +362,7 @@ const Newuser = ({ canclemodel, data, saveData }) => {
 														name="type"
 													>
 														<option value="">--Select--</option>
-														{formData.type.map((row, index) => (
+														{formData.type?.map((row, index) => (
 															<option value={row.type} key={index}>
 																{row.type}
 															</option>
@@ -386,7 +386,7 @@ const Newuser = ({ canclemodel, data, saveData }) => {
 														name="course"
 													>
 														<option value="">--Select--</option>
-														{formData.course.map((row, index) => (
+														{formData.course?.map((row, index) => (
 															<option value={row._id} key={row.key}>
 																{row.course_name}
 															</option>
@@ -409,7 +409,7 @@ const Newuser = ({ canclemodel, data, saveData }) => {
 														name="entree"
 													>
 														<option value="">--Select--</option>
-														{formData.entree.map((row, index) => (
+														{formData.entree?.map((row, index) => (
 															<option value={row._id} key={row.key}>
 																{row.entree_name}
 															</option>
@@ -427,7 +427,7 @@ const Newuser = ({ canclemodel, data, saveData }) => {
 														type="text"
 														className="ant-input ant-input-status-error commen_ allergy_width "
 													/>
-													{/* {formData.allergy.map((row, index) => (
+													{/* {formData.allergy?.map((row, index) => (
 														<option value={row._id} key={row.key}>
 															{row.allergy_name}
 														</option>

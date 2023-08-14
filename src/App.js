@@ -16,8 +16,16 @@ import "./Css/Filter.css";
 import "./Css/Delete.css";
 import "./Css/Success.css";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import { useEffect } from "react";
 
 function App() {
+	useEffect(() => {
+		const apiCalling = () => {
+			
+		}
+		apiCalling()
+	}, [])
+
 	return (
 		<div className="App">
 			<Routes>

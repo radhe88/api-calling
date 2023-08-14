@@ -5,14 +5,13 @@ export const sessionSlice = createSlice({
 	initialState: {
 		token: "",
 		signedIn: false,
-		allergy: [],
-		type: [],
-		table: [],
-		seat: [],
-		entree: [],
-		course: [],
-
-
+		// allergy: [],
+		// type: [],
+		// table: [],
+		// seat: [],
+		// entree: [],
+		// course: [],
+		data: ""
 	},
 	reducers: {
 		onSignInSuccess: (state, action) => {
@@ -23,22 +22,26 @@ export const sessionSlice = createSlice({
 			state.signedIn = false;
 			state.token = "";
 		},
-		storeFormDetails: (state, action) => {
-			// console.log("test", action);
-			let mainData = action.payload.data;
-			state.allergy = mainData.allergy;
-			state.type = mainData.type;
-			state.table = mainData.table;
-			state.seat = mainData.seat;
-			state.entree = mainData.entree;
-			state.course = mainData.course;
-		}
+		onChangeData: (state, action) => {
+			state.data = action.payload;
+		},
+		// storeFormDetails: (state, action) => {
+		// 	state.data = action.payload;
+		// 	// console.log("test", action);
+		// 	// let mainData = action.payload.data;
+		// 	// state.allergy = mainData.allergy;
+		// 	// state.type = mainData.type;
+		// 	// state.table = mainData.table;
+		// 	// state.seat = mainData.seat;
+		// 	// state.entree = mainData.entree;
+		// 	// state.course = mainData.course;
+		// }
 
 
 	},
 });
 
-export const { onSignInSuccess, onSignOutSuccess, setToken, setDemo, storeFormDetails } =
+export const { onSignInSuccess, onSignOutSuccess, setToken, setDemo, storeFormDetails, onChangeData } =
 	sessionSlice.actions;
 
 export default sessionSlice.reducer;

@@ -1,8 +1,10 @@
 import React from 'react'
 import { AiOutlineClose } from 'react-icons/ai';
+import { useSelector } from 'react-redux';
 
 
 const Filter = ({ closeFilterModel }) => {
+    const session = useSelector((store) => store?.auth?.session);
     return (
         <>
             <div className='ant-modal-root commen_'>
