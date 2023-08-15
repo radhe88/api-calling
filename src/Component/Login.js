@@ -11,8 +11,6 @@ const Login = () => {
 	const store = useSelector((store) => store?.auth?.session);
 	console.log(store);
 	const [credentials, setCredentials] = useState({
-		username: "admin",
-		password: "admin#23",
 	});
 	const [error, setError] = useState("");
 	const [show, setShow] = useState(false);

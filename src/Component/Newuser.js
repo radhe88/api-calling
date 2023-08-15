@@ -427,7 +427,8 @@ const Newuser = ({ canclemodel, data, saveData }) => {
 														type="text"
 														className="ant-input ant-input-status-error commen_ allergy_width "
 													/>
-													{/* {formData.allergy?.map((row, index) => (
+													{/* <option value="">--Select--</option>
+													{formData.allergy?.map((row, index) => (
 														<option value={row._id} key={row.key}>
 															{row.allergy_name}
 														</option>

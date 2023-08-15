@@ -23,7 +23,6 @@ export const getFromDetails = (session) => {
                 if (data.status === 200) {
                     // console.log(data?.data?.data);
                     dispatch(onChangeData(data?.data?.data));
-
                     // dispatch({ type: Get_Details, payload: data.data });
                 } else {
                     alert("Something Went wrong in API response !!!")

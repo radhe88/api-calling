@@ -34,8 +34,13 @@ const Header = () => {
 	const [recordId, setRecordId] = useState("");
 	const [isDeleteVisible, setIsDeleteVisible] = useState(false);
 	const [isFilterModel, setIsFilterModel] = useState(false);
+	const [filterValues, setFilterValues] = useState("");
 	const navigate = useNavigate();
 
+	const filterData = (filter) => {
+		// console.log("header", filter)
+		setFilterValues(filter);
+	}
 	const showmodel = () => {
 		setRecordId("");
 		setmodelvisible(true);
@@ -73,6 +78,10 @@ const Header = () => {
 				limit: 10,
 				page: pageNo,
 				search: search,
+				type: filterValues?.type,
+				course: filterValues?.course,
+				allergy: filterValues?.allergy,
+				entree: filterValues?.entree,
 			};
 			const response = await axios
 				.post("/order/get", data, { headers })
@@ -96,7 +105,7 @@ const Header = () => {
 
 	useEffect(() => {
 		getData();
-	}, [pageNo, search]);
+	}, [pageNo, search, filterValues]);
 	const handleLogout = () => {
 		dispatch(onSignOutSuccess());
 		navigate("/sign-in");
@@ -434,7 +443,7 @@ const Header = () => {
 					)}
 					{isFilterModel && (
 						<div className="modal">
-							<Filter closeFilterModel={closeFilterModel} />
+							<Filter closeFilterModel={closeFilterModel} filterRecords={filterData} />
 						</div>
 					)}
 				</section>

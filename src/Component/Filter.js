@@ -1,10 +1,46 @@
 import React from 'react'
 import { AiOutlineClose } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
 
-const Filter = ({ closeFilterModel }) => {
+const Filter = ({ closeFilterModel, filterRecords }) => {
     const session = useSelector((store) => store?.auth?.session);
+    const formData = useSelector((state) => state.auth.session);
+    const [data, setData] = useState([]);
+    const [filterFields, setFilterFields] = useState({
+        type: "",
+        course: "",
+        entree: "",
+        allergy: ""
+    });
+
+    const cleaerData = (e) => {
+        e.preventDefault();
+        setFilterFields({
+            type: "",
+            course: "",
+            entree: "",
+            allergy: ""
+        });
+    }
+
+    const inputhandler = (e) => {
+        e.preventDefault();
+        if (e.target.name) {
+            setFilterFields((prevState) => ({
+                ...prevState,
+                [e.target.name]: e.target.value,
+            }));
+        } else {
+        }
+    }
+
+
+    const onSubmit = () => {
+        filterRecords(filterFields)
+    }
+
     return (
         <>
             <div className='ant-modal-root commen_'>
@@ -31,58 +67,60 @@ const Filter = ({ closeFilterModel }) => {
                                                 <div className='ant-form-item custom-input commen_ ant-form-item-with-help ant-form-item-has-error'>
                                                     <div className='ant-form-item-control-input-content'>
                                                         <input type="text" className='ant-input ant-input-status-error commen_ position_added  width_input' />
-                                                        <select id="select_table" name="table"  >
-                                                            <option >Adult</option>
-                                                            <option >Kid</option>
+                                                        <select value={filterFields?.type} onChange={inputhandler} id="select_table" name="type"  >
+                                                            <option value="">--Select--</option>
+                                                            {formData.type?.map((row, index) => (
+                                                                <option value={row.type} key={index}>
+                                                                    {row.type}
+                                                                </option>
+                                                            ))}
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div className='ant-form-item custom-input commen_ ant-form-item-with-help ant-form-item-has-error'>
                                                     <div className='ant-form-item-control-input-content'>
                                                         <input type="text" className='ant-input ant-input-status-error position_added  width_input' />
-                                                        <select id="select_table" name="table"  >
-                                                            <option >Salad</option>
-                                                            <option >Lobster Bisque</option>
-                                                            <option >Kosher 1st Course</option>
-                                                            <option >Teen Buffet 1st Course</option>
+                                                        <select value={filterFields?.course} onChange={inputhandler} id="select_table" name="course"  >
+                                                            <option value="">--Select--</option>
+                                                            {formData.course?.map((row, index) => (
+                                                                <option value={row._id} key={row.key}>
+                                                                    {row.course_name}
+                                                                </option>
+                                                            ))}
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div className='ant-form-item custom-input commen_ ant-form-item-with-help ant-form-item-has-error'>
                                                     <div className='ant-form-item-control-input-content'>
                                                         <input type="text" className='ant-input ant-input-status-error position_added  width_input' />
-                                                        <select id="select_table" name="table"  >
-                                                            <option >Sea Bass</option>
-                                                            <option >Filet of Beef</option>
-                                                            <option >Maitake Steak</option>
-                                                            <option >Kosher Entree</option>
-                                                            <option >Teen Buffet Entree</option>
+                                                        <select value={filterFields?.entree} onChange={inputhandler} id="select_table" name="entree"  >
+                                                            <option value="">--Select--</option>
+                                                            {formData.entree?.map((row, index) => (
+                                                                <option value={row._id} key={row.key}>
+                                                                    {row.entree_name}
+                                                                </option>
+                                                            ))}
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div className='ant-form-item custom-input commen_ ant-form-item-with-help ant-form-item-has-error'>
                                                     <div className='ant-form-item-control-input-content'>
                                                         <input type="text" className='ant-input ant-input-status-error position_added width_position' />
-                                                        <select id="allergy" name="table"  >
-                                                            <option >1</option>
-                                                            <option >2</option>
-                                                            <option >3</option>
-                                                            <option >4</option>
-                                                            <option >5</option>
-                                                            <option >6</option>
-                                                            <option >7</option>
-                                                            <option >8</option>
-                                                            <option >9</option>
-                                                            <option >10</option>
-                                                            <option >11</option>
+                                                        <select multiple value={filterFields?.allergy} onChange={inputhandler} id="allergy" name="allergy"  >
+                                                            <option value="">--Select--</option>
+                                                            {formData.allergy?.map((row, index) => (
+                                                                <option value={row._id} key={row.key}>
+                                                                    {row.allergy_name}
+                                                                </option>
+                                                            ))}
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className='btn_grp'>
-                                            <button type='button' className='ant-btn commen_ ant-btn-default btn_custom clear_btn button_right'>Clear</button>
-                                            <button type='submit' className='ant-btn commen_ ant-btn-default btn_custom submit_btn '>Submit</button>
+                                            <button onClick={cleaerData} type='button' className='ant-btn commen_ ant-btn-default btn_custom clear_btn button_right'>Clear</button>
+                                            <button type='button' className='ant-btn commen_ ant-btn-default btn_custom submit_btn' onClick={onSubmit}>Submit</button>
                                         </div>
                                     </div>
                                 </form>

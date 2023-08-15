@@ -21,7 +21,7 @@ import { useEffect } from "react";
 function App() {
 	useEffect(() => {
 		const apiCalling = () => {
-			
+
 		}
 		apiCalling()
 	}, [])
@@ -30,15 +30,10 @@ function App() {
 		<div className="App">
 			<Routes>
 				<Route path="/" element={<ProtectedRoute />}>
-					{/* <Route path="/" element={<Header />} /> */}
 					<Route path="/" element={<Header />} />
 					<Route path="/*" element={<div>Page Not Found !</div>} />
 				</Route>
-				{/* <Route path="/sign-in" element={<Login />} /> */}
 				<Route path="/sign-in" element={<Login />} />
-				{/* <Route path="filter" element={<Filter />} />
-        <Route path="delete" element={<Delete />} />
-        <Route path="success" element={<Success />} /> */}
 			</Routes>
 		</div>
 	);
